@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+*{
+  font-family: "Raleway", sans-serif;
+  color: #444;
+  outline: none;
+}
+
+.showpass{
+  position: absolute;
+  right: .5em;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.main{
+  @apply max-w-[90%] 2xl:max-w-[1280px] mx-auto;
+}
+.layout{
+  @apply max-w-[90%] md:max-w-[700px] mx-auto;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1em;
+}
+
+span{
+  color: inherit;
+}
+button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5em;
+}
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5em;
+}
+
+.hero{
+  background: repeating-linear-gradient(
+    45deg,
+    #fefefe,
+    #f1eeee 5px,
+    #fefefe 50px,
+    #999 5px
+    );
+  min-height: 90dvh;
+}
+
+@media screen and (max-width:344px) {
+  .cta{
+    flex-direction: column;
+    gap: .75em;
+  }
+  .cta a{
+    width: 100%;
+    padding: .75em 0;
+  }
+}
