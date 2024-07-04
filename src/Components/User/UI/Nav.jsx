@@ -40,6 +40,7 @@ const Nav = ({ toggleNav }) => {
     try {
       await account.deleteSessions();
       navigate("/login");
+      console.log("first");
     } catch (error) {
       console.log(error);
     } finally {
@@ -71,9 +72,9 @@ const Nav = ({ toggleNav }) => {
                 <NavLink
                   to={nav.path}
                   className={({ isActive }) =>
-                    isActive ?
-                      "flex items-center gap-x-1 bg-secondary mb-2 p-2 rounded" :
-                      "flex items-center gap-x-1 hover:bg-secondary mb-2 p-2 rounded"
+                    isActive
+                      ? "flex items-center gap-x-1 bg-secondary mb-2 p-2 rounded"
+                      : "flex items-center gap-x-1 hover:bg-secondary mb-2 p-2 rounded"
                   }
                 >
                   <div>
@@ -93,7 +94,9 @@ const Nav = ({ toggleNav }) => {
               className="mt-8 w-[90%] mx-auto border py-2 flex items-center justify-center text-red-500 border-red-500 bg-red-200 rounded"
             >
               {loading ? (
-                <span className="text-red-500 font-bold text-sm">Logging Out</span>
+                <span className="text-red-500 font-bold text-sm">
+                  Logging Out
+                </span>
               ) : (
                 <>
                   <span className="material-symbols-outlined text-red-500 font-bold text-sm">

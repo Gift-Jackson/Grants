@@ -1,16 +1,21 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import Header from "./UI/Header";
-import AuthProvider from "../../Context/AuthProvider";
+import { AuthService } from "../../Context/AuthProvider";
+import { useContext } from "react";
 
 const Layout = () => {
+  const { user } = useContext(AuthService);
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
     <>
-      <AuthProvider>
-        <Header />
-        <main className="layout my-4">
-          <Outlet />
-        </main>
-      </AuthProvider>
+      <Header />
+      <main className="layout my-4">
+        <Outlet />
+      </main>
     </>
   );
 };

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import Brand from "../../Global/Brand";
 import Nav from "./Nav";
 import { AuthService } from "../../../Context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { user } = useContext(AuthService);
@@ -10,9 +11,10 @@ const Header = () => {
   const toggleNav = () => {
     setNav(prev => !prev);
   };
+  const navigate = useNavigate()
 
   if (!user) {
-    return null; // or a loading indicator, e.g., 
+    navigate("/login")
   }
 
   const initials = user.name.split(' ').map(name => name[0]).join('');
@@ -24,7 +26,7 @@ const Header = () => {
           <Brand />
           <div className="flex items-center gap-x-2">
             <div className="flex items-center gap-x-2">
-              <p className="text-sm font-medium hidden md:block">{user.name}</p>
+              <p className="text-sm font-medium hidden md:block">{user? (user.name) : "fetching"}</p>
               <div className="h-[40px] w-[40px] flex items-center justify-center bg-primary rounded-full font-bold text-white ">
                 {initials}
               </div>

@@ -39,7 +39,7 @@ const Login = () => {
         console.log(session);
         toast.success("Login successful!");
         setTimeout(() => {
-          navigate("/user/dashboard");
+          navigate("/dashboard");
         }, 2500);
       } catch (error) {
         console.error("Login failed:", error);
