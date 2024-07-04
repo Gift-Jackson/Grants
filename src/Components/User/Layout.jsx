@@ -6,11 +6,9 @@ import { useContext } from "react";
 const Layout = () => {
   const { user } = useContext(AuthService);
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return (
+  return !user ? (
+    <Navigate to="/login" replace />
+  ) : (
     <>
       <Header />
       <main className="layout my-4">
